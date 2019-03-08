@@ -14,13 +14,7 @@ def ping_resource(data)
 
   status = report.status
   target = report.target
-  timestamp = report.timestamp.to_s
-  image_url = get_status_image(status: status, target: target)[:url]
-  alt_text = get_status_image(status: status, target: target)[:alt_text]
-
-  puts "######################"
-  puts "So far, so good..."
-  puts "######################"
+  timestamp = report.timestamp.to_i
 
   @client.web_client.chat_postMessage(
     as_user: true,
@@ -38,7 +32,7 @@ def ping_resource(data)
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": "*Overall Status:*\n#{status}\n*Current as of:*\n#{timestamp}"
+          "text": "*Overall Status:*\n#{status}\n*Current as of:*\n<!date^#{timestamp}^{date_short_pretty} at {time}|Timestamp unavailable, sorry.>"
         },
         "accessory": {
           "type": "image",
