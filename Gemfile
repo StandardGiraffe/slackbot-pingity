@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'pingity', git: "https://github.com/StandardGiraffe/pingity-gem.git"
 
+gem 'slack-ruby-client'
 gem 'slack-ruby-bot'
 gem 'puma'
 gem 'sinatra'

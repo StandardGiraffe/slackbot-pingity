@@ -1,6 +1,6 @@
 module SlackbotPingity
   module Commands
-    class Pingit < SlackRubyBot::Commands::Base
+    class Ping < SlackRubyBot::Commands::Base
       command 'ping' do |client, data, match|
         request = self.process_input(match['expression'])
         client.say(
@@ -8,12 +8,12 @@ module SlackbotPingity
           text: "I'm attempting to ping \"#{request}\".  Just a moment, please..."
         )
 
-        result = Pingity::Report.new(
+        report = Pingity::Report.new(
           request,
           eager: true
         )
 
-        status = result.status
+        status = report.status
 
         client.say(
           channel: data.channel,
